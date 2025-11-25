@@ -1,4 +1,3 @@
-// src/pages/LoginPage.jsx
 import React, { useState } from "react";
 
 const LoginPage = () => {
@@ -18,18 +17,17 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí luego conectamos con tu backend (FastAPI / PostgREST) usando Axios
-    console.log("Enviando credenciales:", form);
+    console.log("Credenciales:", form);
   };
 
   return (
     <div className="auth-page">
       <div className="auth-card">
-        <h1 className="auth-title">GESDOC &amp; TRAIN</h1>
+        <h1 className="auth-title">GESDOC & TRAIN</h1>
         <p className="auth-subtitle">Bienvenido de vuelta</p>
 
         <form onSubmit={handleSubmit} className="auth-form">
-          {/* Usuario */}
+
           <label className="auth-label">
             Usuario
             <div className="auth-input-wrapper">
@@ -46,7 +44,6 @@ const LoginPage = () => {
             </div>
           </label>
 
-          {/* Contraseña */}
           <label className="auth-label">
             Contraseña
             <div className="auth-input-wrapper">
@@ -63,7 +60,6 @@ const LoginPage = () => {
             </div>
           </label>
 
-          {/* Recordarme */}
           <div className="auth-remember">
             <label>
               <input
@@ -76,12 +72,10 @@ const LoginPage = () => {
             </label>
           </div>
 
-          {/* Botón */}
           <button type="submit" className="auth-btn-primary">
             Iniciar Sesión
           </button>
 
-          {/* Enlaces inferiores */}
           <div className="auth-links">
             <a href="#" className="auth-link">
               ¿Olvidaste tu contraseña?
@@ -93,6 +87,7 @@ const LoginPage = () => {
               </a>
             </p>
           </div>
+
         </form>
       </div>
     </div>
