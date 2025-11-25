@@ -11,18 +11,18 @@ const TrainingCard = ({ training }) => {
 
       <div className="training-card-body">
         <div className="training-info-item">
-          <span className="label">Date &amp; Time</span>
+          <span className="label">Fecha & Hora</span>
           <span className="value">{training.dateTime}</span>
         </div>
+
         <div className="training-info-item">
-          <span className="label">Modality</span>
+          <span className="label">Modalidad</span>
           <span className="value">{training.modality}</span>
         </div>
+
         <div className="training-info-item">
-          <span className="label">Duration</span>
-          <span className="value">
-            {training.durationMinutes} minutes
-          </span>
+          <span className="label">Duración</span>
+          <span className="value">{training.durationMinutes} minutos</span>
         </div>
       </div>
     </section>

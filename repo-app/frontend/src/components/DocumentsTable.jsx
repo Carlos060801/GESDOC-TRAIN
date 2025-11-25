@@ -4,30 +4,34 @@ import React from "react";
 const DocumentsTable = ({ documents }) => {
   return (
     <div className="card">
-      <h3>Documents for this Training</h3>
+      <h3>Documentos Requeridos para esta Capacitación</h3>
+
       <table className="data-table">
         <thead>
           <tr>
-            <th>ID Name</th>
-            <th>Category</th>
-            <th>Status</th>
-            <th>Action</th>
+            <th>ID</th>
+            <th>Documento</th>
+            <th>Categoría</th>
+            <th>Obligatorio</th>
+            <th>Acción</th>
           </tr>
         </thead>
+
         <tbody>
           {documents.map((doc) => (
             <tr key={doc.id}>
+              <td>{doc.id}</td>
               <td>{doc.name}</td>
               <td>{doc.category}</td>
               <td>
                 {doc.mandatory ? (
-                  <span className="badge badge-green">Mandatory</span>
+                  <span className="badge badge-green">Sí</span>
                 ) : (
-                  <span className="badge">Optional</span>
+                  <span className="badge">No</span>
                 )}
               </td>
               <td>
-                <button className="table-btn">View</button>
+                <button className="table-btn">Ver</button>
               </td>
             </tr>
           ))}
