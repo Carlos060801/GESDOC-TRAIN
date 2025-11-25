@@ -1,7 +1,0 @@
-FROM postgres:16
-
-ENV POSTGRES_USER=${POSTGRES_USER}
-ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-ENV POSTGRES_DB=${POSTGRES_DB}
-
-COPY script_distri.sql /docker-entrypoint-initdb.d/init.sql
