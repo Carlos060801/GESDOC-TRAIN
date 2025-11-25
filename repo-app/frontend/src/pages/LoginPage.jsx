@@ -1,69 +1,99 @@
 // src/pages/LoginPage.jsx
 import React, { useState } from "react";
-import "./login.css";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+    remember: false,
+  });
 
-  const handleLogin = (e) => {
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
+    // Aquí luego conectamos con tu backend (FastAPI / PostgREST) usando Axios
+    console.log("Enviando credenciales:", form);
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
+    <div className="auth-page">
+      <div className="auth-card">
+        <h1 className="auth-title">GESDOC &amp; TRAIN</h1>
+        <p className="auth-subtitle">Bienvenido de vuelta</p>
 
-        <h1 className="login-title">GESDOC & TRAIN</h1>
-        <p className="login-subtitle">Bienvenido de vuelta</p>
-
-        <form onSubmit={handleLogin}>
-
+        <form onSubmit={handleSubmit} className="auth-form">
           {/* Usuario */}
-          <label className="login-label">Usuario</label>
-          <div className="input-group">
-            <span className="input-icon">👤</span>
-            <input
-              type="email"
-              placeholder="correo@ejemplo.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
+          <label className="auth-label">
+            Usuario
+            <div className="auth-input-wrapper">
+              <span className="auth-input-icon">👤</span>
+              <input
+                type="email"
+                name="email"
+                placeholder="correo@ejemplo.com"
+                value={form.email}
+                onChange={handleChange}
+                className="auth-input"
+                required
+              />
+            </div>
+          </label>
 
           {/* Contraseña */}
-          <label className="login-label">Contraseña</label>
-          <div className="input-group">
-            <span className="input-icon">🔒</span>
-            <input
-              type="password"
-              placeholder="*******"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
+          <label className="auth-label">
+            Contraseña
+            <div className="auth-input-wrapper">
+              <span className="auth-input-icon">🔒</span>
+              <input
+                type="password"
+                name="password"
+                placeholder="••••••••"
+                value={form.password}
+                onChange={handleChange}
+                className="auth-input"
+                required
+              />
+            </div>
+          </label>
 
           {/* Recordarme */}
-          <div className="remember-row">
-            <input type="checkbox" id="remember" />
-            <label htmlFor="remember">Recordarme</label>
+          <div className="auth-remember">
+            <label>
+              <input
+                type="checkbox"
+                name="remember"
+                checked={form.remember}
+                onChange={handleChange}
+              />{" "}
+              Recordarme
+            </label>
           </div>
 
-          <button className="login-btn" type="submit">
+          {/* Botón */}
+          <button type="submit" className="auth-btn-primary">
             Iniciar Sesión
           </button>
+
+          {/* Enlaces inferiores */}
+          <div className="auth-links">
+            <a href="#" className="auth-link">
+              ¿Olvidaste tu contraseña?
+            </a>
+            <p className="auth-register-text">
+              ¿No tienes cuenta?{" "}
+              <a href="#" className="auth-link-strong">
+                Registrarse
+              </a>
+            </p>
+          </div>
         </form>
-
-        <a className="forgot" href="#">¿Olvidaste tu contraseña?</a>
-
-        <p className="register-text">
-          ¿No tienes cuenta? <a className="register-link" href="#">Registrarse</a>
-        </p>
-
       </div>
     </div>
   );
