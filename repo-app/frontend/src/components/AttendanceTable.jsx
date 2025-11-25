@@ -4,16 +4,18 @@ import React from "react";
 const AttendanceTable = ({ attendance }) => {
   return (
     <div className="card">
-      <h3>Attendance List</h3>
+      <h3>Lista de Asistencia</h3>
+
       <table className="data-table">
         <thead>
           <tr>
-            <th>Employee</th>
-            <th>Department</th>
-            <th>Status</th>
-            <th>Observation</th>
+            <th>Empleado</th>
+            <th>Departamento</th>
+            <th>Estado</th>
+            <th>Observación</th>
           </tr>
         </thead>
+
         <tbody>
           {attendance.map((row) => (
             <tr key={row.id}>

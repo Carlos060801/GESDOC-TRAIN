@@ -8,7 +8,7 @@ export const AppRouter = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
 
-      {/* Página por defecto */}
+      {/* fallback */}
       <Route path="*" element={<LoginPage />} />
     </Routes>
   );
