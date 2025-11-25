@@ -1,74 +1,88 @@
-/* ========================= */
-/*   LOGIN REFINADO FINAL   */
-/* ========================= */
-
+/* ======================= */
+/*   FONDO AZUL DEL LOGIN   */
+/* ======================= */
 .auth-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at top, #e4ecff, #f4f6fb);
+
+  /* El fondo azul que quieres conservar */
+  background: linear-gradient(
+    180deg,
+    #e8edff 0%,
+    #eef2ff 35%,
+    #f4f6fb 100%
+  );
 }
 
+/* ======================= */
+/*      TARJETA LOGIN      */
+/* ======================= */
 .auth-card {
-  width: 380px;
+  width: 430px;         /* <- Ajustado para inputs */
   background: #ffffff;
-  padding: 2.2rem 1.9rem 2.6rem;
-  border-radius: 20px;
+  padding: 2.6rem 2.4rem;
+  border-radius: 22px;
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
   text-align: center;
 }
 
-/* TÍTULO */
+/* ======================= */
+/*   TÍTULO Y SUBTÍTULO    */
+/* ======================= */
 .auth-title {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 700;
   color: #0b3f82;
   margin-bottom: 0.3rem;
-  letter-spacing: 0.05em;
 }
 
 .auth-subtitle {
   font-size: 0.9rem;
   color: #6b7280;
-  margin-bottom: 1.8rem; /* BAJA TODO EL FORM UN POCO */
+  margin-bottom: 1.8rem;
 }
 
-/* FORM */
+/* ======================= */
+/*     INPUTS AJUSTADOS    */
+/* ======================= */
 .auth-form {
   text-align: left;
 }
 
 .auth-label {
   font-size: 0.82rem;
-  font-weight: 500;
+  font-weight: 600;
   color: #374151;
   margin-bottom: 0.25rem;
 }
 
-/* INPUTS */
 .auth-input-wrapper {
   position: relative;
-  margin-bottom: 1.1rem; /* MÁS ESPACIO ENTRE CAMPOS */
+  margin-bottom: 1.2rem;
 }
 
 .auth-input-icon {
   position: absolute;
-  left: 0.85rem;
+  left: 0.8rem;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1rem;
   opacity: 0.55;
+  font-size: 0.95rem;
 }
 
+/* 🎯 AQUÍ ESTÁ LA CORRECCIÓN DEL TAMAÑO */
 .auth-input {
   width: 100%;
-  padding: 0.6rem 0.9rem 0.6rem 2.4rem;
+  height: 45px;
+  padding: 0 1rem 0 2.3rem;
   border: 1px solid #d1d5db;
-  border-radius: 12px; /* MÁS REDONDEADO */
-  font-size: 0.87rem;
-  background: #fdfdfd;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  background: #ffffff;
   transition: 0.2s;
+  box-sizing: border-box;
 }
 
 .auth-input:focus {
@@ -77,41 +91,43 @@
   outline: none;
 }
 
-/* RECORDARME */
+/* ======================= */
+/*  CHECKBOX Y BOTÓN       */
+/* ======================= */
 .auth-remember {
   font-size: 0.82rem;
-  margin: 0.2rem 0 1.4rem;
+  margin: 0.2rem 0 1.3rem;
 }
 
-/* BOTÓN */
 .auth-btn-primary {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.8rem;
   background: #1d4ed8;
   border: none;
   border-radius: 12px;
   color: #fff;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  margin-bottom: 1.4rem; /* BAJA LOS ENLACES */
+  margin-top: 0.5rem;
 }
 
 .auth-btn-primary:hover {
   background: #1e40af;
 }
 
-/* LINKS */
+/* ======================= */
+/*    LINKS INFERIORES     */
+/* ======================= */
 .auth-links {
   text-align: center;
-  font-size: 0.82rem;
+  margin-top: 1.2rem;
 }
 
 .auth-link {
+  font-size: 0.82rem;
   color: #2563eb;
   text-decoration: none;
-  display: inline-block;
-  margin-bottom: 0.35rem;
 }
 
 .auth-link:hover {
@@ -119,17 +135,13 @@
 }
 
 .auth-register-text {
-  color: #6b7280;
+  margin-top: 0.4rem;
   font-size: 0.82rem;
-  margin-top: 0.2rem;
+  color: #6b7280;
 }
 
 .auth-link-strong {
   color: #2563eb;
   font-weight: 600;
   text-decoration: none;
-}
-
-.auth-link-strong:hover {
-  text-decoration: underline;
 }

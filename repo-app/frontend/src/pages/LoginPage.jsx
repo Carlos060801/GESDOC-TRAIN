@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // 👈 IMPORTANTE
 
 const LoginPage = () => {
   const [form, setForm] = useState({
@@ -80,11 +81,12 @@ const LoginPage = () => {
             <a href="#" className="auth-link">
               ¿Olvidaste tu contraseña?
             </a>
+
             <p className="auth-register-text">
               ¿No tienes cuenta?{" "}
-              <a href="#" className="auth-link-strong">
+              <Link to="/register" className="auth-link-strong">
                 Registrarse
-              </a>
+              </Link>
             </p>
           </div>
 
