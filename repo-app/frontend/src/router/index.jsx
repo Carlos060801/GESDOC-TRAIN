@@ -1,5 +1,15 @@
-// src/router/index.jsx
+import { Routes, Route } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
+import DashboardPage from "../pages/DashboardPage";
 
-// dentro de <Routes> ...
-<Route path="/login" element={<LoginPage />} />
+export const AppRouter = () => {
+  return (
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/dashboard" element={<DashboardPage />} />
+
+      {/* Página por defecto */}
+      <Route path="*" element={<LoginPage />} />
+    </Routes>
+  );
+};
