@@ -79,7 +79,6 @@
   font-size: 0.9rem;
   background: #ffffff;
   transition: 0.2s;
-  box-sizing: border-box;
 }
 
 .auth-input:focus {
@@ -143,7 +142,6 @@
 .auth-link-strong {
   color: #2563eb;
   font-weight: 600;
-  text-decoration: none;
 }
 
 /* ================================================================== */
@@ -228,13 +226,12 @@
 
 .tab-btn {
   padding: 10px 18px;
-  border: none;
   background: transparent;
+  border: none;
   font-size: 0.9rem;
   font-weight: 600;
   color: #6b7280;
   cursor: pointer;
-  transition: 0.2s ease;
 }
 
 .tab-btn.active {
@@ -268,22 +265,21 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 12px;
 }
 
 thead th {
-  text-align: left;
-  font-size: 0.85rem;
-  color: #6b7280;
   padding-bottom: 10px;
   border-bottom: 1px solid #e5e7eb;
+  font-size: 0.85rem;
+  color: #6b7280;
+  text-align: left;
 }
 
 tbody td {
   padding: 12px 5px;
+  border-bottom: 1px solid #f1f5f9;
   font-size: 0.9rem;
   color: #374151;
-  border-bottom: 1px solid #f1f5f9;
 }
 
 tbody tr:hover {
@@ -449,4 +445,127 @@ tbody tr:hover {
 
 .btn-danger:hover {
   background: #fecaca !important;
+}
+
+/* ================================================================== */
+/*                           MY PROFILE PAGE                           */
+/* ================================================================== */
+
+.profile-wrapper {
+  padding: 28px;
+}
+
+.profile-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1f3b73;
+  margin-bottom: 18px;
+}
+
+.profile-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 25px;
+}
+
+.profile-avatar {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  border: 3px solid #1d4ed8;
+}
+
+.profile-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.profile-role {
+  background: #e3e9ff;
+  padding: 6px 12px;
+  color: #1d4ed8;
+  font-weight: 600;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+.profile-section {
+  margin-top: 28px;
+}
+
+.profile-section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.profile-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.profile-info-grid label {
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.profile-info-grid p {
+  margin-top: 4px;
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.password-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.password-grid input {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.password-grid input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+  outline: none;
+}
+
+.btn-update-profile {
+  margin-top: 18px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #1d4ed8;
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-update-profile:hover {
+  background: #1e3fae;
 }
