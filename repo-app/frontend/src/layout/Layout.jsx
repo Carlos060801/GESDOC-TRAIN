@@ -5,11 +5,12 @@ import Topbar from "./Topbar";
 
 const Layout = ({ children }) => {
   return (
-    <div className="app-container">
+    <div style={{ display: "flex" }}>
       <Sidebar />
-      <div className="main-content">
+
+      <div style={{ flexGrow: 1 }}>
         <Topbar />
-        <div className="page-content">{children}</div>
+        <main style={{ padding: "20px" }}>{children}</main>
       </div>
     </div>
   );
