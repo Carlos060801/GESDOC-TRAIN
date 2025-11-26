@@ -1,372 +1,86 @@
 /* ================================================================== */
-/*                         FONDO AZUL DEL LOGIN                       */
+/*                         EMPLOYEES PAGE (NUEVO)                     */
 /* ================================================================== */
 
-.auth-page {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(
-    180deg,
-    #e8edff 0%,
-    #eef2ff 35%,
-    #f4f6fb 100%
-  );
-}
-
-/* ================================================================== */
-/*                          TARJETA LOGIN                              */
-/* ================================================================== */
-
-.auth-card {
-  width: 430px;
-  background: #ffffff;
-  padding: 2.6rem 2.4rem;
-  border-radius: 22px;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
-  text-align: center;
-}
-
-.auth-title {
-  font-size: 1.7rem;
+.page-title {
+  font-size: 1.6rem;
   font-weight: 700;
-  color: #0b3f82;
-  margin-bottom: 0.3rem;
-}
-
-.auth-subtitle {
-  font-size: 0.9rem;
-  color: #6b7280;
-  margin-bottom: 1.8rem;
-}
-
-/* ================================================================== */
-/*                               INPUTS                                */
-/* ================================================================== */
-
-.auth-form {
-  text-align: left;
-}
-
-.auth-label {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 0.25rem;
-}
-
-.auth-input-wrapper {
-  position: relative;
-  margin-bottom: 1.2rem;
-}
-
-.auth-input-icon {
-  position: absolute;
-  left: 0.8rem;
-  top: 50%;
-  transform: translateY(-50%);
-  opacity: 0.55;
-  font-size: 0.95rem;
-}
-
-.auth-input {
-  width: 100%;
-  height: 45px;
-  padding: 0 1rem 0 2.3rem;
-  border: 1px solid #d1d5db;
-  border-radius: 12px;
-  font-size: 0.9rem;
-  background: #ffffff;
-  transition: 0.2s;
-  box-sizing: border-box;
-}
-
-.auth-input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
-  outline: none;
-}
-
-/* ================================================================== */
-/*                      CHECKBOX Y BOTÓN LOGIN                         */
-/* ================================================================== */
-
-.auth-remember {
-  font-size: 0.82rem;
-  margin: 0.2rem 0 1.3rem;
-}
-
-.auth-btn-primary {
-  width: 100%;
-  padding: 0.8rem;
-  background: #1d4ed8;
-  border: none;
-  border-radius: 12px;
-  color: #fff;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  transition: 0.2s;
-}
-
-.auth-btn-primary:hover {
-  background: #1e40af;
-}
-
-/* ================================================================== */
-/*                         LINKS INFERIORES                            */
-/* ================================================================== */
-
-.auth-links {
-  text-align: center;
-  margin-top: 1.2rem;
-}
-
-.auth-link {
-  font-size: 0.82rem;
-  color: #2563eb;
-  text-decoration: none;
-}
-
-.auth-link:hover {
-  text-decoration: underline;
-}
-
-.auth-register-text {
-  margin-top: 0.4rem;
-  font-size: 0.82rem;
-  color: #6b7280;
-}
-
-.auth-link-strong {
-  color: #2563eb;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-/* ================================================================== */
-/*                        DASHBOARD TRAINING CARD                      */
-/* ================================================================== */
-
-.training-card {
-  background: #ffffff;
-  padding: 22px;
-  border-radius: 16px;
-  margin-bottom: 25px;
-  border: 1px solid #e5e7eb;
-  transition: 0.2s ease;
-}
-
-.training-card:hover {
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
-}
-
-/* Header */
-.training-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  color: #1f3b73;
   margin-bottom: 18px;
 }
 
-.training-title {
-  font-size: 1.3rem;
+/* Card del formulario de empleados */
+.employee-form-card {
+  background: #ffffff;
+  padding: 18px 20px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+}
+
+.form-title {
+  font-size: 1rem;
   font-weight: 700;
-  color: #1f3b73;
+  color: #111827;
+  margin-bottom: 12px;
 }
 
-/* Badge */
-.badge {
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: white;
+/* Grid de inputs */
+.employee-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 18px;
 }
 
-.badge-green {
-  background-color: #4CAF50;
-}
-
-.badge-gray {
-  background-color: #6c757d;
-}
-
-/* Body Info */
-.training-card-body {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.training-info-item {
+.employee-form-grid > div {
   display: flex;
   flex-direction: column;
 }
 
-.label {
+/* Botones debajo del formulario */
+.employee-form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Botón secundario */
+.btn-secondary {
+  padding: 0.7rem 1.1rem;
+  border-radius: 10px;
+  border: 1px solid #cbd5f5;
+  background: #e5edff;
+  color: #1d4ed8;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #6b7280;
+  cursor: pointer;
 }
 
-.value {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #111827;
+.btn-secondary:hover {
+  background: #d1ddff;
 }
 
-/* ================================================================== */
-/*                        TABS DEL DASHBOARD                           */
-/* ================================================================== */
-
-.tabs-container {
-  margin-top: 20px;
-  border-bottom: 1px solid #e5e7eb;
-  display: flex;
-  gap: 1rem;
-}
-
-.tab-btn {
-  padding: 10px 18px;
+/* Botones de la tabla */
+.btn-table {
+  padding: 4px 10px;
+  border-radius: 6px;
   border: none;
-  background: transparent;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #6b7280;
+  font-size: 0.8rem;
   cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.tab-btn.active {
-  color: #1d4ed8;
-  border-bottom: 3px solid #1d4ed8;
-}
-
-.tab-btn:hover {
+  margin-left: 6px;
+  background: #e5edff;
   color: #1d4ed8;
 }
 
-/* ================================================================== */
-/*                     TABLAS DOCUMENTOS Y ASISTENCIA                 */
-/* ================================================================== */
-
-.table-container {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 18px;
-  border: 1px solid #e5e7eb;
-  margin-top: 20px;
+.btn-table:hover {
+  background: #d1ddff;
 }
 
-.table-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #1f2937;
-  margin-bottom: 10px;
+.btn-danger {
+  background: #fee2e2 !important;
+  color: #dc2626 !important;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 12px;
-}
-
-thead th {
-  text-align: left;
-  font-size: 0.85rem;
-  color: #6b7280;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-tbody td {
-  padding: 12px 5px;
-  font-size: 0.9rem;
-  color: #374151;
-  border-bottom: 1px solid #f1f5f9;
-}
-
-tbody tr:hover {
-  background: #f9fafb;
-}
-
-.status-dot {
-  height: 12px;
-  width: 12px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.status-green {
-  background: #22c55e;
-}
-
-.status-orange {
-  background: #f59e0b;
-}
-
-.status-red {
-  background: #dc2626;
-}
-
-/* ================================================================== */
-/*                              SIDEBAR                                */
-/* ================================================================== */
-
-.sidebar {
-  width: 230px;
-  background: #0b1f3a;
-  color: white;
-  height: 100vh;
-  padding: 1.5rem 1rem;
-}
-
-.sidebar-title {
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 2rem;
-}
-
-.sidebar-link {
-  display: block;
-  padding: 10px 14px;
-  color: #cbd5e1;
-  margin-bottom: 8px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.sidebar-link:hover,
-.sidebar-link.active {
-  background: #1e3a8a;
-  color: #fff;
-}
-
-/* ================================================================== */
-/*                              TOPBAR                                 */
-/* ================================================================== */
-
-.topbar {
-  width: 100%;
-  padding: 1rem 2rem;
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.topbar-icon {
-  font-size: 1.2rem;
-  margin-left: 15px;
-  cursor: pointer;
-  color: #475569;
-}
-
-.topbar-icon:hover {
-  color: #1d4ed8;
+.btn-danger:hover {
+  background: #fecaca !important;
 }
