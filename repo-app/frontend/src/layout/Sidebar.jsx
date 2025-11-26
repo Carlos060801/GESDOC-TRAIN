@@ -13,9 +13,17 @@ const Sidebar = () => {
         Employees
       </Link>
 
-      <a className="sidebar-link">Trainings</a>
-      <a className="sidebar-link">Documents</a>
-      <a className="sidebar-link">My Profile</a>
+      <Link to="/trainings" className="sidebar-link">
+        Trainings
+      </Link>
+
+      <Link to="/documents" className="sidebar-link">
+        Documents
+      </Link>
+
+      <Link to="/profile" className="sidebar-link">
+        My Profile
+      </Link>
     </aside>
   );
 };

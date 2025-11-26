@@ -4,6 +4,8 @@ import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import DashboardPage from "../pages/DashboardPage";
 import EmployeesPage from "../pages/EmployeesPage";
+import TrainingsPage from "../pages/TrainingsPage";
+import DocumentsPage from "../pages/DocumentsPage";
 
 export const AppRouter = () => {
   return (
@@ -15,8 +17,10 @@ export const AppRouter = () => {
       {/* 🔵 Dashboard principal */}
       <Route path="/dashboard" element={<DashboardPage />} />
 
-      {/* 🔵 Employees (GESTIÓN DE EMPLEADOS) */}
+      {/* 🔵 Módulos del Sistema */}
       <Route path="/employees" element={<EmployeesPage />} />
+      <Route path="/trainings" element={<TrainingsPage />} />
+      <Route path="/documents" element={<DocumentsPage />} />
 
       {/* 🔵 Ruta por defecto */}
       <Route path="*" element={<LoginPage />} />
