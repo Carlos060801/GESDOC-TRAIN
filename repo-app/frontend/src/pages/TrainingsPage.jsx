@@ -1,33 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import TrainingCard from "../components/TrainingCard";
 
-const TrainingCard = () => {
+const TrainingsPage = () => {
+  const [trainings] = useState([
+    {
+      id: 1,
+      title: "Capacitación SG-SST",
+      status: "Activo",
+      dateTime: "2025-02-20 08:00 AM",
+      modality: "Presencial",
+      durationMinutes: 90,
+    },
+    {
+      id: 2,
+      title: "Inducción General ICBF",
+      status: "Finalizado",
+      dateTime: "2025-01-15 02:00 PM",
+      modality: "Virtual",
+      durationMinutes: 120,
+    },
+  ]);
+
   return (
-    <div className="training-card">
+    <div className="dashboard-content">
+      <h1 className="page-title">Capacitaciones</h1>
 
-      <div className="training-header">
-        <h3>Induction in Cybersecurity</h3>
-        <span className="status-badge">SCHEDULED</span>
-      </div>
-
-      <div className="training-info">
-        <div>
-          <h4>Fecha & Hora</h4>
-          <p>20/03/2026, 10:00 AM</p>
-        </div>
-
-        <div>
-          <h4>Modalidad</h4>
-          <p>Virtual</p>
-        </div>
-
-        <div>
-          <h4>Duración</h4>
-          <p>120 minutos</p>
-        </div>
-
-      </div>
+      {/* LISTA DE CAPACITACIONES */}
+      {trainings.map((t) => (
+        <TrainingCard key={t.id} training={t} />
+      ))}
     </div>
   );
 };
 
-export default TrainingCard;
+export default TrainingsPage;
