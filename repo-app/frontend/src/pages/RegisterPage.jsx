@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
+  const navigate = useNavigate(); // Para redirigir al login
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -9,14 +10,54 @@ const RegisterPage = () => {
     confirm: "",
   });
 
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Datos de registro:", form);
+    setError(null);
+    setLoading(true);
+
+    // 1. Validación: Contraseñas iguales
+    if (form.password !== form.confirm) {
+      setError("Las contraseñas no coinciden");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      // 2. Petición al Backend Python
+      const response = await fetch("http://127.0.0.1:8000/usuarios", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name_user: form.name,        // Ajustamos al nombre que espera Pydantic
+          email_user: form.email,
+          password_user: form.password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("¡Registro exitoso! Ahora inicia sesión.");
+        navigate("/login"); // Redirigir al Login
+      } else {
+        setError(data.error || "Error al registrar usuario");
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      setError("No se pudo conectar con el servidor.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -25,6 +66,13 @@ const RegisterPage = () => {
 
         <h1 className="auth-title">Crear Cuenta</h1>
         <p className="auth-subtitle">Únete a GESDOC & TRAIN</p>
+
+        {/* Mostrar alertas de error */}
+        {error && (
+          <div style={{ color: "red", textAlign: "center", marginBottom: "1rem" }}>
+            ⚠️ {error}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="auth-form">
 
@@ -88,8 +136,8 @@ const RegisterPage = () => {
             />
           </div>
 
-          <button type="submit" className="auth-btn-primary">
-            Registrarse
+          <button type="submit" className="auth-btn-primary" disabled={loading}>
+            {loading ? "Registrando..." : "Registrarse"}
           </button>
 
           <div className="auth-links">
