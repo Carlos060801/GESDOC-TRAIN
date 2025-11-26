@@ -3,12 +3,16 @@ import React from "react";
 
 const TrainingCard = ({ training }) => {
   return (
-    <section className="training-card">
+    <section className="training-card shadow-card">
+      {/* Encabezado */}
       <div className="training-card-header">
-        <h2>{training.title}</h2>
-        <span className="badge badge-green">{training.status}</span>
+        <h2 className="training-title">{training.title}</h2>
+        <span className={`badge ${training.status === "SCHEDULED" ? "badge-green" : "badge-gray"}`}>
+          {training.status}
+        </span>
       </div>
 
+      {/* Información */}
       <div className="training-card-body">
         <div className="training-info-item">
           <span className="label">Fecha & Hora</span>

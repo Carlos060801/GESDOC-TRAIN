@@ -1,70 +1,26 @@
-// src/pages/DashboardPage.jsx
-import React, { useState } from "react";
+import React from "react";
 import TrainingCard from "../components/TrainingCard";
 import Tabs from "../components/Tabs";
 import DocumentsTable from "../components/DocumentsTable";
 import AttendanceTable from "../components/AttendanceTable";
 
 const DashboardPage = () => {
-  const [activeTab, setActiveTab] = useState("information");
-
-  // Datos de ejemplo (luego los sacamos de tu API)
-  const training = {
-    title: "Induction in Cybersecurity",
-    status: "SCHEDULED",
-    modality: "Virtual",
-    dateTime: "20/03/2026, 10:00 AM",
-    durationMinutes: 120,
-  };
-
-  const documents = [
-    { id: 1, name: "Legal Policy", category: "Legal", mandatory: true },
-    { id: 2, name: "Data Usage Policy", category: "Data", mandatory: true },
-  ];
-
-  const attendance = [
-    {
-      id: 1,
-      employeeName: "Juan Pérez",
-      department: "Sales",
-      status: "Pending",
-      observation: "",
-    },
-  ];
-
   return (
-    <div className="page-content">
-      <h2 style={{ marginBottom: "1rem", fontWeight: 600 }}>
-        Trainings Management
-      </h2>
+    <div className="dashboard-container">
+
+      <h2 className="page-title">Trainings Management</h2>
 
       {/* Tarjeta principal */}
-      <TrainingCard training={training} />
+      <TrainingCard />
 
       {/* Tabs */}
-      <Tabs activeTab={activeTab} onChange={setActiveTab} />
-
-      {/* Contenido dinámico */}
-      {activeTab === "information" && (
-        <div className="tab-content">
-          <p>
-            Aquí puedes añadir la información general de la capacitación:
-            descripción, objetivos, alcance, requisitos, etc.
-          </p>
-        </div>
-      )}
-
-      {activeTab === "documents" && (
-        <div className="tab-content">
-          <DocumentsTable documents={documents} />
-        </div>
-      )}
-
-      {activeTab === "attendance" && (
-        <div className="tab-content">
-          <AttendanceTable attendance={attendance} />
-        </div>
-      )}
+      <Tabs
+        tabs={[
+          { id: 1, title: "Información", content: <p>Información general del entrenamiento aquí</p> },
+          { id: 2, title: "Documentos Requeridos", content: <DocumentsTable /> },
+          { id: 3, title: "Lista de Asistencia", content: <AttendanceTable /> },
+        ]}
+      />
     </div>
   );
 };
