@@ -1,24 +1,38 @@
 import axios from "axios";
 
-// URL base del backend en Docker
-const API_URL = "http://localhost:9000";
+// ==========================================
+// CONFIGURACIÓN GENERAL
+// ==========================================
+const API_URL = "http://localhost:9000"; // Backend FastAPI en Docker
 
-// -------------------------------
-// REGISTRO
-// -------------------------------
+const api = axios.create({
+  baseURL: API_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+// ==========================================
+//       AUTENTICACIÓN (REGISTER + LOGIN)
+// ==========================================
+
+// -----------------------
+// 1. Registrar usuario
+// -----------------------
 export const registerUser = async (userData) => {
-  return await axios.post(`${API_URL}/auth/register`, userData);
+  return await api.post("/auth/register", userData);
 };
 
-// -------------------------------
-// LOGIN
-// -------------------------------
-export const loginUser = async (credentials) => {
-  const formData = new FormData();
-  formData.append("email", credentials.email);
-  formData.append("password", credentials.password);
-
-  return await axios.post(`${API_URL}/auth/login`, formData, {
-    headers: { "Content-Type": "multipart/form-data" },
-  });
+// -----------------------
+// 2. Login de usuario
+// -----------------------
+export const loginUser = async (email, password) => {
+  return await api.post(
+    `/auth/login?email=${email}&password=${password}`
+  );
 };
+
+// ==========================================
+// EXPORTACIÓN GLOBAL
+// ==========================================
+export default api;
