@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { registerUser } from "../services/api";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
+    name_user: "",
+    email_user: "",
+    password_user: "",
     confirm: "",
   });
 
@@ -17,33 +16,43 @@ const RegisterPage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
+    setLoading(true);
 
-    if (form.password !== form.confirm) {
-      setError("Las contraseñas no coinciden");
+    // Validar contraseñas
+    if (form.password_user !== form.confirm) {
+      setError("Las contraseñas no coinciden.");
+      setLoading(false);
       return;
     }
 
-    setLoading(true);
-
     try {
-      const response = await registerUser({
-        name_user: form.name,
-        email_user: form.email,
-        password_user: form.password,
+      const response = await fetch("http://localhost:9000/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name_user: form.name_user,
+          email_user: form.email_user,
+          password_user: form.password_user,
+        }),
       });
 
-      alert("✔️ Registro exitoso, ya puedes iniciar sesión");
-      navigate("/login");
+      const data = await response.json();
 
+      if (response.ok) {
+        alert("¡Registro exitoso! Ahora inicia sesión.");
+        navigate("/login");
+      } else {
+        setError(data.detail || data.error || "Error al registrar usuario.");
+      }
     } catch (err) {
+      setError("No se pudo conectar con el servidor.");
       console.error(err);
-      setError("No se pudo registrar el usuario.");
     } finally {
       setLoading(false);
     }
@@ -52,6 +61,7 @@ const RegisterPage = () => {
   return (
     <div className="auth-page">
       <div className="auth-card">
+
         <h1 className="auth-title">Crear Cuenta</h1>
         <p className="auth-subtitle">Únete a GESDOC & TRAIN</p>
 
@@ -65,54 +75,52 @@ const RegisterPage = () => {
 
           <label className="auth-label">Nombre Completo</label>
           <div className="auth-input-wrapper">
-            <span className="auth-input-icon">👤</span>
             <input
               type="text"
-              name="name"
-              placeholder="Tu nombre completo"
+              name="name_user"
               className="auth-input"
-              value={form.name}
+              placeholder="Tu nombre"
               onChange={handleChange}
+              value={form.name_user}
               required
             />
           </div>
 
           <label className="auth-label">Correo Electrónico</label>
           <div className="auth-input-wrapper">
-            <span className="auth-input-icon">📧</span>
             <input
               type="email"
-              name="email"
-              placeholder="correo@ejemplo.com"
+              name="email_user"
               className="auth-input"
-              value={form.email}
+              placeholder="correo@ejemplo.com"
               onChange={handleChange}
+              value={form.email_user}
               required
             />
           </div>
 
           <label className="auth-label">Contraseña</label>
           <div className="auth-input-wrapper">
-            <span className="auth-input-icon">🔒</span>
             <input
               type="password"
-              name="password"
+              name="password_user"
               className="auth-input"
-              value={form.password}
+              placeholder="••••••••"
               onChange={handleChange}
+              value={form.password_user}
               required
             />
           </div>
 
           <label className="auth-label">Confirmar Contraseña</label>
           <div className="auth-input-wrapper">
-            <span className="auth-input-icon">🔒</span>
             <input
               type="password"
               name="confirm"
               className="auth-input"
-              value={form.confirm}
+              placeholder="Repite tu contraseña"
               onChange={handleChange}
+              value={form.confirm}
               required
             />
           </div>
@@ -122,8 +130,12 @@ const RegisterPage = () => {
           </button>
 
           <p className="auth-register-text">
-            ¿Ya tienes cuenta? <Link to="/login">Iniciar Sesión</Link>
+            ¿Ya tienes una cuenta?{" "}
+            <Link to="/login" className="auth-link-strong">
+              Iniciar Sesión
+            </Link>
           </p>
+
         </form>
       </div>
     </div>
