@@ -5,7 +5,6 @@ ENV PYTHONDONTWRITEBYTECODE=1
 
 WORKDIR /app
 
-# Instalar dependencias necesarias en Alpine
 RUN apk update && apk add --no-cache \
     build-base \
     gcc \
@@ -14,20 +13,16 @@ RUN apk update && apk add --no-cache \
     openssl-dev \
     postgresql-dev
 
-# Actualizar pip
 RUN pip install --upgrade pip
 
-# Copiar requirements
 COPY requirements.txt .
 
-# Instalar dependencias Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar backend
 COPY . .
 
-# Exponer puerto
-EXPOSE 8000
+# Exponer puerto interno 9000
+EXPOSE 9000
 
-# Ejecutar FastAPI
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Ejecutar FastAPI en puerto interno 9000
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "9000"]
