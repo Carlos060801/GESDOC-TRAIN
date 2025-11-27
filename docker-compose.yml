@@ -1,8 +1,28 @@
 version: "3.9"
 
 services:
-  postgres:
-    image: postgres:15
+
+  # ========================
+  # BACKEND - FASTAPI
+  # ========================
+  backend:
+    build: ./repo-api/backend
+    container_name: gesdoc_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@database:5432/gesdoc_train
+    depends_on:
+      - database
+    networks:
+      - gesdoc-net
+
+  # ========================
+  # BASE DE DATOS - POSTGRES
+  # ========================
+  database:
+    build: ./database
     container_name: gesdoc_postgres
     restart: always
     environment:
@@ -12,11 +32,14 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - gesdoc_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql   # ← IMPORTANTE
     networks:
       - gesdoc-net
 
+  # ========================
+  # PGADMIN - ADMINISTRADOR DB
+  # ========================
   pgadmin:
     image: dpage/pgadmin4
     container_name: gesdoc_pgadmin
@@ -27,9 +50,28 @@ services:
     ports:
       - "5050:80"
     depends_on:
-      - postgres
+      - database
     networks:
       - gesdoc-net
 
+  # ========================
+  # FRONTEND - REACT + VITE
+  # ========================
+  frontend:
+    build: ./repo-app/frontend
+    container_name: gesdoc_frontend
+    restart: always
+    ports:
+      - "5173:5173"
+    networks:
+      - gesdoc-net
+
+# ========================
+# CONFIGURACIÓN GLOBAL
+# ========================
+
 networks:
   gesdoc-net:
+
+volumes:
+  gesdoc_data:
