@@ -38,7 +38,7 @@ Desarrollar un sistema web distribuido que permita gestionar de forma eficiente 
 | **DevOps**                 | GitHub Actions (CI/CD), SonarQube (Calidad), Versionado por ramas |
 -----------------------------------------------------------------------------------------------------
 ## 📂 Estructura del Repositorio
-Practica-ICBF/
+
 docs:
 ![alt text](image.png)
 # Manuales y documentación Con Diapositivas
