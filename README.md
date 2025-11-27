@@ -146,6 +146,8 @@ Frontend
 | Documentación                   | ✔ En proceso   |
 | UML (C4, secuencia, despliegue) | ✔ Generado     |
 ---------------------------------------------------------
+Arquitectura: 
+
 🌱 Futuras mejoras
 
 * Añadir Dashboard analítico avanzado
