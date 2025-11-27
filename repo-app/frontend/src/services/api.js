@@ -1,15 +1,24 @@
 import axios from "axios";
 
-const API = axios.create({
-  baseURL: "http://localhost:9000",
-});
+// URL base del backend en Docker
+const API_URL = "http://localhost:9000";
 
-// REGISTER
-export const registerUser = (userData) =>
-  API.post("/auth/register", userData);
+// -------------------------------
+// REGISTRO
+// -------------------------------
+export const registerUser = async (userData) => {
+  return await axios.post(`${API_URL}/auth/register`, userData);
+};
 
+// -------------------------------
 // LOGIN
-export const loginUser = (credentials) =>
-  API.post("/auth/login", credentials);
+// -------------------------------
+export const loginUser = async (credentials) => {
+  const formData = new FormData();
+  formData.append("email", credentials.email);
+  formData.append("password", credentials.password);
 
-export default API;
+  return await axios.post(`${API_URL}/auth/login`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+};
