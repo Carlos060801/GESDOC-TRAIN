@@ -40,47 +40,120 @@ Desarrollar un sistema web distribuido que permita gestionar de forma eficiente 
 ## 📂 Estructura del Repositorio
 Practica-ICBF/
 docs:
+![alt text](image.png)
 # Manuales y documentación Con Diapositivas
 # arquitectura
 # Proyecto
 -----------------------------------
-# 📱 SIGE - Sistema de Gestión del Bienestar Familiar
+# 📱 GESDOC - Sistema de Gestión Documental y Capacitación
 
-Proyecto desarrollado para la **Institución Bienestar Familiar (ICBF)** con el objetivo
-de comunicar las **Misión, Visión y sus políticas y objetivos institucionales** a los nuevos integrantes del bienestar,
-a través de una **aplicación móvil interactiva** con chatbot y acceso a información de los 7 pilares:
+GESDOC & TRAIN es un sistema web distribuido, diseñado para gestionar:
 
-- Política de Calidad  
-- Política Ambiental  
-- SGSI (Seguridad de la Información)  
-- Riesgos  
-- Tratamiento de Datos Personales  
-- SST (Seguridad y Salud en el Trabajo)  
-- Bienestar  
+* Documentación institucional
 
----
+* Entrenamientos, capacitaciones y asistencia
+
+* Usuarios, roles y permisos
+
+* Políticas internas, normativas y documentos obligatorios
+Este proyecto está inspirado en las necesidades reales de instituciones como ICBF, ofreciendo una plataforma moderna, escalable y segura.
+
+------------------------------------------------------
 
 ## 🧩 Arquitectura del Proyecto
 
-El sistema se basa en una arquitectura **distribuida**:
-- **Frontend móvil:** Flutter (Dart)
-- **Backend / Servicios:** Git Cloud + APIs REST
-- **Chatbot:** Módulo integrado de asistencia a nuevos usuarios
-- **Repositorio:** GitHub (código base y documentación)
-- **Almacenamiento externo:** Google Drive (proyecto completo)
+GESDOC & TRAIN sigue una arquitectura profesional moderna:
 
+🖥 Frontend – React + Vite
+
+* Arquitectura por capas
+
+* Vista de Dashboard
+
+* Módulos: Employees, Trainings, Documents, My Profile
+
+* Diseño UI tipo empresarial
+
+🐍 Backend – FastAPI (Python)
+
+Arquitectura modular (routers / services / models)
+
+Seguridad con JWT
+
+Endpoints REST para:
+
+* Auth
+* Users
+* Employees
+* Trainings
+* Documents
+* Attendance
+
+🗄 Base de Datos – PostgreSQL
+
+Modelo relacional dividido por subdominios:
+
+* Security
+* Training
+* Documents
+
+🐳 Infraestructura – Docker
+
+Contenedores:
+
+PostgreSQL
+
+* Backend FastAPI
+* Frontend React & Vite
+
+Configuración con:
+* Dockerfile
+* docker-compose.yml
+* .env
 ---
 
 ## 🚀 Instalación y Ejecución
 
-> ⚠️ Debido al peso del proyecto, el código fuente completo se encuentra en Google Drive.
+🐳 1. Usando Docker (Recomendado)
+docker-compose up --build
 
-1. Descarga la aplicación completa desde:
-   👉 [Descargar SIGE - Google Drive](https://drive.google.com/file/d/1uzvrhwR4T-QGUw40IEtltTaQTNruiznr/view?usp=sharing)
+Esto levanta:
 
-2. Descomprime el archivo ZIP.  
-3. Abre la carpeta en VS Code o Android Studio.  
-4. Ejecuta el siguiente comando:
-   ```bash
-   flutter pub get
-   flutter run
+* PostgreSQL → puerto 5432
+
+* Backend FastAPI → puerto 9000
+
+* Frontend React/Vite → puerto 5173
+-------------------------------------
+🖥 2. Manual sin Docker
+Backend
+* cd repo-api/repo-api-1
+* pip install -r requirements.txt
+* uvicorn main:app --reload --port 9000
+
+Frontend
+* cd repo-app
+* npm install
+* npm run dev
+----------------------------------------------
+📌 Estado del Proyecto
+| Módulo                          | Estado         |
+| ------------------------------- | -------------- |
+| Backend FastAPI                 | ✔ Completado   |
+| Frontend React/Vite             | ✔ Avanzado     |
+| PostgreSQL Modelo               | ✔ Finalizado   |
+| Dockerización                   | ✔ Implementada |
+| Documentación                   | ✔ En proceso   |
+| UML (C4, secuencia, despliegue) | ✔ Generado     |
+---------------------------------------------------------
+🌱 Futuras mejoras
+
+* Añadir Dashboard analítico avanzado
+
+* Integración de chatbot inteligente
+
+* Reportería PDF automatizada
+
+* Mejoras en roles y permisos
+
+* Optimización de CI/CD con GitHub Actions
