@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { loginUser } from "../services/api";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-
   const [form, setForm] = useState({
-    email_user: "",
-    password_user: "",
+    email: "",
+    password: "",
+    remember: false,
   });
 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -23,28 +27,25 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        `http://localhost:9000/auth/login?email=${form.email_user}&password=${form.password_user}`,
-        {
-          method: "POST",
-        }
-      );
+      const payload = {
+        email: form.email,
+        password: form.password,
+      };
 
-      const data = await response.json();
+      const { data } = await loginUser(payload);
 
-      if (response.ok) {
-        alert("Bienvenido " + data.usuario.nombre);
+      alert("✅ Bienvenido " + data.usuario.name_user);
+      localStorage.setItem("usuario", JSON.stringify(data.usuario));
+      localStorage.setItem("token", data.token);
 
-        // Guardar sesión
-        localStorage.setItem("usuario", JSON.stringify(data.usuario));
-
-        navigate("/dashboard");
-      } else {
-        setError(data.detail || "Error al iniciar sesión");
-      }
+      navigate("/dashboard");
     } catch (err) {
-      setError("No se pudo conectar con el servidor.");
       console.error(err);
+      if (err.response?.data?.detail) {
+        setError(err.response.data.detail);
+      } else {
+        setError("No se pudo conectar con el servidor.");
+      }
     } finally {
       setLoading(false);
     }
@@ -53,57 +54,79 @@ const LoginPage = () => {
   return (
     <div className="auth-page">
       <div className="auth-card">
-
-        <h1 className="auth-title">GESDOC & TRAIN</h1>
+        <h1 className="auth-title">GESDOC &amp; TRAIN</h1>
         <p className="auth-subtitle">Bienvenido de vuelta</p>
 
         {error && (
-          <div style={{ color: "red", marginBottom: "1rem" }}>
+          <div
+            style={{ color: "red", marginBottom: "1rem", textAlign: "center" }}
+          >
             ⚠️ {error}
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="auth-form">
+          <label className="auth-label">
+            Usuario (Email)
+            <div className="auth-input-wrapper">
+              <span className="auth-input-icon">👤</span>
+              <input
+                type="email"
+                name="email"
+                placeholder="correo@ejemplo.com"
+                value={form.email}
+                onChange={handleChange}
+                className="auth-input"
+                required
+              />
+            </div>
+          </label>
 
-          <label className="auth-label">Correo Electrónico</label>
-          <div className="auth-input-wrapper">
-            <input
-              type="email"
-              name="email_user"
-              className="auth-input"
-              placeholder="correo@ejemplo.com"
-              onChange={handleChange}
-              value={form.email_user}
-              required
-            />
-          </div>
+          <label className="auth-label">
+            Contraseña
+            <div className="auth-input-wrapper">
+              <span className="auth-input-icon">🔒</span>
+              <input
+                type="password"
+                name="password"
+                placeholder="••••••••"
+                value={form.password}
+                onChange={handleChange}
+                className="auth-input"
+                required
+              />
+            </div>
+          </label>
 
-          <label className="auth-label">Contraseña</label>
-          <div className="auth-input-wrapper">
-            <input
-              type="password"
-              name="password_user"
-              className="auth-input"
-              placeholder="••••••••"
-              onChange={handleChange}
-              value={form.password_user}
-              required
-            />
+          <div className="auth-remember">
+            <label>
+              <input
+                type="checkbox"
+                name="remember"
+                checked={form.remember}
+                onChange={handleChange}
+              />{" "}
+              Recordarme
+            </label>
           </div>
 
           <button type="submit" className="auth-btn-primary" disabled={loading}>
             {loading ? "Verificando..." : "Iniciar Sesión"}
           </button>
 
-          <p className="auth-register-text">
-            ¿No tienes cuenta?{" "}
-            <Link to="/register" className="auth-link-strong">
-              Registrarse
-            </Link>
-          </p>
+          <div className="auth-links">
+            <a href="#" className="auth-link">
+              ¿Olvidaste tu contraseña?
+            </a>
 
+            <p className="auth-register-text">
+              ¿No tienes cuenta?{" "}
+              <Link to="/register" className="auth-link-strong">
+                Registrarse
+              </Link>
+            </p>
+          </div>
         </form>
-
       </div>
     </div>
   );

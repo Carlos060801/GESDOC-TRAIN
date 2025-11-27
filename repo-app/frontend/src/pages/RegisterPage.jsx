@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { registerUser } from "../services/api";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
-    name_user: "",
-    email_user: "",
-    password_user: "",
+    name: "",
+    email: "",
+    password: "",
     confirm: "",
   });
 
@@ -22,37 +23,32 @@ const RegisterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
-    setLoading(true);
 
-    // Validar contraseñas
-    if (form.password_user !== form.confirm) {
-      setError("Las contraseñas no coinciden.");
-      setLoading(false);
+    if (form.password !== form.confirm) {
+      setError("Las contraseñas no coinciden");
       return;
     }
 
+    setLoading(true);
     try {
-      const response = await fetch("http://localhost:9000/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name_user: form.name_user,
-          email_user: form.email_user,
-          password_user: form.password_user,
-        }),
-      });
+      const payload = {
+        name_user: form.name,
+        email_user: form.email,
+        password_user: form.password,
+      };
 
-      const data = await response.json();
+      const { data } = await registerUser(payload);
 
-      if (response.ok) {
-        alert("¡Registro exitoso! Ahora inicia sesión.");
-        navigate("/login");
-      } else {
-        setError(data.detail || data.error || "Error al registrar usuario.");
-      }
+      alert("✅ Registro exitoso. Ahora inicia sesión.");
+      console.log("Nuevo usuario:", data);
+      navigate("/login");
     } catch (err) {
-      setError("No se pudo conectar con el servidor.");
       console.error(err);
+      if (err.response?.data?.detail) {
+        setError(err.response.data.detail);
+      } else {
+        setError("No se pudo conectar con el servidor.");
+      }
     } finally {
       setLoading(false);
     }
@@ -61,9 +57,8 @@ const RegisterPage = () => {
   return (
     <div className="auth-page">
       <div className="auth-card">
-
         <h1 className="auth-title">Crear Cuenta</h1>
-        <p className="auth-subtitle">Únete a GESDOC & TRAIN</p>
+        <p className="auth-subtitle">Únete a GESDOC &amp; TRAIN</p>
 
         {error && (
           <div style={{ color: "red", textAlign: "center", marginBottom: "1rem" }}>
@@ -72,55 +67,58 @@ const RegisterPage = () => {
         )}
 
         <form onSubmit={handleSubmit} className="auth-form">
-
           <label className="auth-label">Nombre Completo</label>
           <div className="auth-input-wrapper">
+            <span className="auth-input-icon">👤</span>
             <input
               type="text"
-              name="name_user"
+              name="name"
+              placeholder="Tu nombre completo"
               className="auth-input"
-              placeholder="Tu nombre"
+              value={form.name}
               onChange={handleChange}
-              value={form.name_user}
               required
             />
           </div>
 
           <label className="auth-label">Correo Electrónico</label>
           <div className="auth-input-wrapper">
+            <span className="auth-input-icon">📧</span>
             <input
               type="email"
-              name="email_user"
-              className="auth-input"
+              name="email"
               placeholder="correo@ejemplo.com"
+              className="auth-input"
+              value={form.email}
               onChange={handleChange}
-              value={form.email_user}
               required
             />
           </div>
 
           <label className="auth-label">Contraseña</label>
           <div className="auth-input-wrapper">
+            <span className="auth-input-icon">🔒</span>
             <input
               type="password"
-              name="password_user"
-              className="auth-input"
+              name="password"
               placeholder="••••••••"
+              className="auth-input"
+              value={form.password}
               onChange={handleChange}
-              value={form.password_user}
               required
             />
           </div>
 
           <label className="auth-label">Confirmar Contraseña</label>
           <div className="auth-input-wrapper">
+            <span className="auth-input-icon">🔒</span>
             <input
               type="password"
               name="confirm"
-              className="auth-input"
               placeholder="Repite tu contraseña"
-              onChange={handleChange}
+              className="auth-input"
               value={form.confirm}
+              onChange={handleChange}
               required
             />
           </div>
@@ -129,13 +127,14 @@ const RegisterPage = () => {
             {loading ? "Registrando..." : "Registrarse"}
           </button>
 
-          <p className="auth-register-text">
-            ¿Ya tienes una cuenta?{" "}
-            <Link to="/login" className="auth-link-strong">
-              Iniciar Sesión
-            </Link>
-          </p>
-
+          <div className="auth-links">
+            <p className="auth-register-text">
+              ¿Ya tienes una cuenta?{" "}
+              <Link className="auth-link-strong" to="/login">
+                Iniciar Sesión
+              </Link>
+            </p>
+          </div>
         </form>
       </div>
     </div>
