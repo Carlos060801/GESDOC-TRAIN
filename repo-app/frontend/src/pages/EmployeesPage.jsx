@@ -19,44 +19,31 @@ const EmployeesPage = () => {
       apellido: "Pérez",
       cargo: "Analista",
       departamento: "Sales",
-    },
-    {
-      id: 2,
-      documento: "1023445588",
-      nombre: "Laura",
-      apellido: "Gómez",
-      cargo: "Asistente",
-      departamento: "Marketing",
-    },
+    }
   ];
 
   return (
     <Layout>
-      <div className="employees-header">
-        <h1 className="page-title">Employees</h1>
-        <p className="page-subtitle">
-          Gestión de empleados registrados en el sistema.
-        </p>
-      </div>
+      <h1 className="page-title">Employees</h1>
 
-      {/* === FORM CARD === */}
-      <div className="card">
-        <h2 className="card-title">Registrar Nuevo Empleado</h2>
+      {/* CARD DEL FORMULARIO */}
+      <div className="employee-card">
+        <h2 className="employee-card-title">Registrar Empleado</h2>
 
-        <div className="form-grid">
-          <div className="form-control">
+        <div className="employee-grid">
+          {/* Documento */}
+          <div className="employee-control">
             <label>Documento</label>
             <input
               type="text"
               placeholder="Documento de identidad"
               value={form.documento}
-              onChange={(e) =>
-                setForm({ ...form, documento: e.target.value })
-              }
+              onChange={(e) => setForm({ ...form, documento: e.target.value })}
             />
           </div>
 
-          <div className="form-control">
+          {/* Nombre */}
+          <div className="employee-control">
             <label>Nombre</label>
             <input
               type="text"
@@ -66,7 +53,8 @@ const EmployeesPage = () => {
             />
           </div>
 
-          <div className="form-control">
+          {/* Apellido */}
+          <div className="employee-control">
             <label>Apellido</label>
             <input
               type="text"
@@ -76,7 +64,8 @@ const EmployeesPage = () => {
             />
           </div>
 
-          <div className="form-control">
+          {/* Cargo */}
+          <div className="employee-control">
             <label>Cargo</label>
             <input
               type="text"
@@ -86,7 +75,8 @@ const EmployeesPage = () => {
             />
           </div>
 
-          <div className="form-control full">
+          {/* Departamento */}
+          <div className="employee-control full">
             <label>Departamento</label>
             <input
               type="text"
@@ -99,14 +89,14 @@ const EmployeesPage = () => {
           </div>
         </div>
 
-        <button className="btn-primary full-btn">Registrar</button>
+        <button className="employee-btn">Registrar</button>
       </div>
 
-      {/* === TABLE CARD === */}
-      <div className="card">
-        <h2 className="card-title">Lista de Empleados</h2>
+      {/* LISTADO */}
+      <div className="employee-card">
+        <h2 className="employee-card-title">Listado de Empleados</h2>
 
-        <table className="table">
+        <table className="employee-table">
           <thead>
             <tr>
               <th>Documento</th>
@@ -114,7 +104,6 @@ const EmployeesPage = () => {
               <th>Apellido</th>
               <th>Cargo</th>
               <th>Departamento</th>
-              <th className="text-right">Acción</th>
             </tr>
           </thead>
 
@@ -126,9 +115,6 @@ const EmployeesPage = () => {
                 <td>{emp.apellido}</td>
                 <td>{emp.cargo}</td>
                 <td>{emp.departamento}</td>
-                <td className="text-right">
-                  <button className="dots-btn">•••</button>
-                </td>
               </tr>
             ))}
           </tbody>

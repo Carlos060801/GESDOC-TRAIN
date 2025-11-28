@@ -1,86 +1,98 @@
-.employees-header {
+/* Título Principal */
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
   margin-bottom: 20px;
-}
-
-.card {
-  background: white;
-  padding: 22px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
-}
-
-.card-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 16px;
   color: #0f172a;
 }
 
-/* FORM GRID */
-.form-grid {
+/* Card estilo corporativo */
+.employee-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  width: 100%;
+}
+
+/* Título del card */
+.employee-card-title {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: #1e293b;
+}
+
+/* GRID profesional */
+.employee-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 15px;
 }
 
 .full {
   grid-column: span 2;
 }
 
-.form-control label {
+/* Labels */
+.employee-control label {
   font-size: 13px;
   color: #475569;
+  margin-bottom: 4px;
+  display: block;
 }
 
-.form-control input {
+/* Inputs elegantes */
+.employee-control input {
   width: 100%;
-  padding: 10px 14px;
-  margin-top: 4px;
+  padding: 9px 12px;
   border-radius: 8px;
   border: 1px solid #e2e8f0;
   background: #f8fafc;
   font-size: 14px;
+  transition: all 0.2s ease;
 }
 
-/* BUTTON */
-.full-btn {
+.employee-control input:focus {
+  border-color: #2563eb;
+  background: white;
+}
+
+/* Botón */
+.employee-btn {
   width: 100%;
-  margin-top: 12px;
-  padding: 12px;
+  background: #2563eb;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
   font-size: 15px;
+  cursor: pointer;
+  font-weight: 600;
 }
 
-/* TABLE STYLE */
-.table {
+.employee-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Tabla */
+.employee-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
 }
 
-.table th {
+.employee-table th {
   background: #f1f5f9;
+  padding: 12px;
   text-align: left;
-  padding: 12px;
-  color: #475569;
   font-size: 13px;
+  color: #475569;
 }
 
-.table td {
+.employee-table td {
   padding: 12px;
-  border-bottom: 1px solid #e2e8f0;
   font-size: 14px;
-  color: #334155;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.dots-btn {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 18px;
+  border-bottom: 1px solid #e2e8f0;
 }
