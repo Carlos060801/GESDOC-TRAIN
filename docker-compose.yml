@@ -1,20 +1,25 @@
 version: "3.9"
 
 services:
-
   # ========================
-  # BACKEND - FASTAPI
+  # BACKEND - FASTAPI (DEV)
   # ========================
   backend:
-    build: ./repo-api/backend
+    build:
+      context: ./repo-api/backend
+      dockerfile: Dockerfile
     container_name: gesdoc_backend
     restart: always
     ports:
       - "9000:9000"
+    volumes:
+      - ./repo-api/backend:/app           # Hot reload real
+      - /app/__pycache__/                 # Evitar cache del host
     environment:
       DATABASE_URL: postgresql://postgres:postgres@database:5432/gesdoc_train
     depends_on:
       - database
+    command: uvicorn main:app --host 0.0.0.0 --port 9000 --reload
     networks:
       - gesdoc-net
 
@@ -22,7 +27,7 @@ services:
   # BASE DE DATOS - POSTGRES
   # ========================
   database:
-    build: ./database
+    image: postgres:15
     container_name: gesdoc_postgres
     restart: always
     environment:
@@ -33,12 +38,12 @@ services:
       - "5432:5432"
     volumes:
       - gesdoc_data:/var/lib/postgresql/data
-      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql   # ← IMPORTANTE
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - gesdoc-net
 
   # ========================
-  # PGADMIN - ADMINISTRADOR DB
+  # PGADMIN - ADMINISTRACIÓN
   # ========================
   pgadmin:
     image: dpage/pgadmin4
@@ -55,21 +60,26 @@ services:
       - gesdoc-net
 
   # ========================
-  # FRONTEND - REACT + VITE
+  # FRONTEND - REACT + VITE (DEV)
   # ========================
   frontend:
-    build: ./repo-app/frontend
+    build:
+      context: ./repo-app/frontend
+      dockerfile: Dockerfile
     container_name: gesdoc_frontend
     restart: always
     ports:
       - "5173:5173"
+    volumes:
+      - ./repo-app/frontend:/app        # Hot reload real
+      - /app/node_modules               # Evita sobrescritura del host
+    command: ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
     networks:
       - gesdoc-net
 
 # ========================
-# CONFIGURACIÓN GLOBAL
+# REDES Y VOLUMENES
 # ========================
-
 networks:
   gesdoc-net:
 

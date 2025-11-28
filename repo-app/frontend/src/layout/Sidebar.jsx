@@ -1,30 +1,39 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import { MdDashboard, MdPeople, MdMenuBook, MdDescription, MdPerson } from "react-icons/md";
+import "../styles/sidebar.css";
 
 const Sidebar = () => {
   return (
-    <aside className="sidebar">
-      <h2 className="sidebar-title">GESDOC & TRAIN</h2>
+    <div className="sidebar">
+      <h2 className="sidebar-logo">GESDOC & TRAIN</h2>
 
-      <Link to="/dashboard" className="sidebar-link">
-        Dashboard
-      </Link>
+      <nav className="sidebar-menu">
+        <a href="/dashboard" className="sidebar-item active">
+          <MdDashboard className="sidebar-icon" />
+          Dashboard
+        </a>
 
-      <Link to="/employees" className="sidebar-link">
-        Employees
-      </Link>
+        <a href="/employees" className="sidebar-item">
+          <MdPeople className="sidebar-icon" />
+          Employees
+        </a>
 
-      <Link to="/trainings" className="sidebar-link">
-        Trainings
-      </Link>
+        <a href="/trainings" className="sidebar-item">
+          <MdMenuBook className="sidebar-icon" />
+          Trainings
+        </a>
 
-      <Link to="/documents" className="sidebar-link">
-        Documents
-      </Link>
+        <a href="/documents" className="sidebar-item">
+          <MdDescription className="sidebar-icon" />
+          Documents
+        </a>
 
-      <Link to="/profile" className="sidebar-link">
-        My Profile
-      </Link>
-    </aside>
+        <a href="/profile" className="sidebar-item">
+          <MdPerson className="sidebar-icon" />
+          My Profile
+        </a>
+      </nav>
+    </div>
   );
 };
 

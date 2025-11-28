@@ -1,12 +1,15 @@
-// src/layout/Topbar.jsx
+import React from "react";
+import { MdNotificationsNone, MdPersonOutline } from "react-icons/md";
+import "../styles/topbar.css";
 
 const Topbar = () => {
   return (
-    <header className="topbar">
-      <span className="topbar-icon">🔔</span>
-      <span className="topbar-icon">⚙️</span>
-      <span className="topbar-icon">👤</span>
-    </header>
+    <div className="topbar">
+      <div className="topbar-icons">
+        <MdNotificationsNone className="topbar-icon" />
+        <MdPersonOutline className="topbar-icon" />
+      </div>
+    </div>
   );
 };
 
