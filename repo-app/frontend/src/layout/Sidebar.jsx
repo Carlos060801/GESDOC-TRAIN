@@ -1,5 +1,11 @@
 import React from "react";
-import { MdDashboard, MdPeople, MdMenuBook, MdDescription, MdPerson } from "react-icons/md";
+import {
+  MdDashboard,
+  MdPeople,
+  MdLibraryBooks,
+  MdDescription,
+  MdPerson
+} from "react-icons/md";
 import "../styles/sidebar.css";
 
 const Sidebar = () => {
@@ -8,6 +14,7 @@ const Sidebar = () => {
       <h2 className="sidebar-logo">GESDOC & TRAIN</h2>
 
       <nav className="sidebar-menu">
+
         <a href="/dashboard" className="sidebar-item active">
           <MdDashboard className="sidebar-icon" />
           Dashboard
@@ -19,7 +26,7 @@ const Sidebar = () => {
         </a>
 
         <a href="/trainings" className="sidebar-item">
-          <MdMenuBook className="sidebar-icon" />
+          <MdLibraryBooks className="sidebar-icon" />
           Trainings
         </a>
 
@@ -32,6 +39,7 @@ const Sidebar = () => {
           <MdPerson className="sidebar-icon" />
           My Profile
         </a>
+
       </nav>
     </div>
   );

@@ -4,44 +4,47 @@
   position: fixed;
   left: 0;
   top: 0;
-  background: #0f1e40; /* Azul oscuro profesional */
+  background: #0f1e40;
   padding: 30px 20px;
   color: white;
+  box-shadow: 4px 0 18px rgba(0, 0, 0, 0.15);
 }
 
 .sidebar-logo {
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 40px;
+  letter-spacing: 1px;
 }
 
 .sidebar-menu {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 
 .sidebar-item {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 5px;
-  font-size: 15px;
+  padding: 10px 8px;
+  border-radius: 8px;
   text-decoration: none;
-  color: #dbeafe;
-  transition: 0.2s;
+  font-size: 15px;
+  color: #cbd5e1;
+  transition: 0.25s ease;
 }
 
 .sidebar-item:hover {
-  color: #ffffff;
-  padding-left: 10px;
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(4px);
 }
 
 .sidebar-item.active {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
-  padding-left: 10px;
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  font-weight: 600;
 }
 
 .sidebar-icon {
