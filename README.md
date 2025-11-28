@@ -56,7 +56,7 @@ Accede a las diapositivas del proyecto, presentaciones en PowerPoint, arquitectu
 ![Arquitectura del Sistema](https://github.com/Carlos060801/GESDOC-TRAIN/blob/main/repo-docs/Diagramas/Arquitectura.drawio.png)
 
 # Proyecto
-
+[👉 **Abrir Proyecto GESDOC & TRAIN**](https://github.com/Carlos060801/GESDOC-TRAIN/tree/main/repo-docs/Proyecto)
 -----------------------------------
 # 📱 GESDOC - Sistema de Gestión Documental y Capacitación
 
