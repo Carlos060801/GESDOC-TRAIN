@@ -1,31 +1,29 @@
-// src/components/TrainingCard.jsx
 import React from "react";
+import "../styles/trainingcard.css";
 
 const TrainingCard = ({ training }) => {
   return (
-    <section className="training-card">
-      <div className="training-card-header">
+    <div className="training-card">
+      <div className="training-title-row">
         <h2 className="training-title">{training.title}</h2>
-        <span className="badge badge-green">{training.status}</span>
+        <span className="badge green">{training.status}</span>
       </div>
 
-      <div className="training-card-body">
-        <div className="training-info-item">
-          <span className="label">Fecha & Hora</span>
-          <span className="value">{training.dateTime}</span>
+      <div className="training-details">
+        <div>
+          <p className="label">Fecha & Hora</p>
+          <p className="value">{training.dateTime}</p>
         </div>
-
-        <div className="training-info-item">
-          <span className="label">Modalidad</span>
-          <span className="value">{training.modality}</span>
+        <div>
+          <p className="label">Modalidad</p>
+          <p className="value">{training.modality}</p>
         </div>
-
-        <div className="training-info-item">
-          <span className="label">Duración</span>
-          <span className="value">{training.durationMinutes} minutos</span>
+        <div>
+          <p className="label">Duración</p>
+          <p className="value">{training.durationMinutes} minutos</p>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

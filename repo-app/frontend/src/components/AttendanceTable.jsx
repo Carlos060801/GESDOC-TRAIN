@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/table.css";
 
 const AttendanceTable = ({ list }) => {
   return (
@@ -17,14 +18,14 @@ const AttendanceTable = ({ list }) => {
             <td>{row.employee}</td>
             <td>{row.department}</td>
             <td>
-              {row.status === "Present" ? (
-                <span className="status-dot status-complete">●</span>
-              ) : (
-                <span className="status-dot status-pending">●</span>
-              )}
-              <span className="status-text">{row.status}</span>
+              <span
+                className={`status-dot ${
+                  row.status === "Present" ? "green" : "yellow"
+                }`}
+              ></span>
+              {row.status}
             </td>
-            <td>{row.observation || "-"}</td>
+            <td>{row.observation}</td>
           </tr>
         ))}
       </tbody>

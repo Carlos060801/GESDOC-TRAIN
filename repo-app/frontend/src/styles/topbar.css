@@ -5,24 +5,18 @@
   border-bottom: 1px solid #e2e8f0;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
   position: sticky;
   top: 0;
   z-index: 20;
 }
 
-.topbar-icons {
+.topbar-right {
   display: flex;
-  gap: 14px;
+  gap: 16px;
 }
 
 .topbar-icon {
   font-size: 22px;
   color: #475569;
   cursor: pointer;
-  transition: 0.2s;
-}
-
-.topbar-icon:hover {
-  color: #0f172a;
 }

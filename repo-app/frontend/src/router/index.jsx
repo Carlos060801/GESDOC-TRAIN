@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
@@ -10,20 +10,21 @@ import DocumentsPage from "../pages/DocumentsPage";
 export const AppRouter = () => {
   return (
     <Routes>
-      {/* 🔵 Rutas de autenticación */}
+      {/* Rutas públicas */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
 
-      {/* 🔵 Dashboard principal */}
-      <Route path="/dashboard" element={<DashboardPage />} />
+      {/* Redirección automática */}
+      <Route path="/" element={<Navigate to="/dashboard" />} />
 
-      {/* 🔵 Módulos del Sistema */}
+      {/* Módulos principales */}
+      <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/employees" element={<EmployeesPage />} />
       <Route path="/trainings" element={<TrainingsPage />} />
       <Route path="/documents" element={<DocumentsPage />} />
 
-      {/* 🔵 Ruta por defecto */}
-      <Route path="*" element={<LoginPage />} />
+      {/* Ruta por defecto */}
+      <Route path="*" element={<Navigate to="/dashboard" />} />
     </Routes>
   );
 };

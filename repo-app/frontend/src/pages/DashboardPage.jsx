@@ -14,18 +14,12 @@ const DashboardPage = () => {
     status: "SCHEDULED",
     dateTime: "29/01/2026, 10:00 AM",
     modality: "Virtual",
-    durationMinutes: 120,
-    state: "Active",
+    durationMinutes: 120
   };
 
   const documents = [
     { id: 1, name: "Legal", category: "Movement", status: "Complete" },
-    {
-      id: 2,
-      name: "Data Usage Policy",
-      category: "Mandatory",
-      status: "Pending",
-    },
+    { id: 2, name: "Data Usage Policy", category: "Mandatory", status: "Pending" }
   ];
 
   const attendance = [
@@ -33,104 +27,63 @@ const DashboardPage = () => {
       id: 1,
       employee: "Juan Pérez (ID: 129)",
       department: "Sales",
-      date: "29/01/2026",
       status: "Pending",
-      observation: "",
-    },
+      observation: "-"
+    }
   ];
 
   return (
     <Layout>
-      <div className="dashboard-container">
-        {/* HEADER */}
-        <div className="dashboard-topbar">
-          <div>
-            <h1 className="dashboard-title">Trainings Management</h1>
-            <p className="dashboard-subtitle">
-              Administra las capacitaciones, documentos requeridos y listas de
-              asistencia.
-            </p>
-          </div>
-
-          <div className="dashboard-actions">
-            <div className="search-wrapper">
-              <input
-                type="text"
-                className="search-input"
-                placeholder="Search"
-              />
-            </div>
-
-            <select className="filter-select">
-              <option>Filter by Status</option>
-              <option>Scheduled</option>
-              <option>Completed</option>
-              <option>Cancelled</option>
-            </select>
-
-            <button className="btn-primary">Create New Training</button>
-          </div>
+      <div className="dashboard-header">
+        <div>
+          <h1 className="page-title">Trainings Management</h1>
+          <p className="page-subtitle">
+            Administra las capacitaciones, documentos requeridos y listas de asistencia.
+          </p>
         </div>
 
-        {/* TRAINING CARD */}
-        <TrainingCard training={training} />
+        <div className="top-actions">
+          <input type="text" placeholder="Search" className="search-input" />
+          <select className="filter-select">
+            <option>Filter by Status</option>
+            <option>Scheduled</option>
+            <option>Completed</option>
+          </select>
+          <button className="btn-primary">Create New Training</button>
+        </div>
+      </div>
 
-        {/* TABS */}
-        <Tabs
-          active={activeTab}
-          setActive={setActiveTab}
-          tabs={[
-            { id: "info", label: "Information" },
-            { id: "docs", label: "Required Documents" },
-            { id: "attendance", label: "Attendance List" },
-          ]}
-        />
+      <TrainingCard training={training} />
+      <Tabs active={activeTab} setActive={setActiveTab} />
 
-        {/* Contenido de las tabs */}
-        <div className="tabs-section">
-          {activeTab === "info" && (
-            <>
-              <div className="section-card">
-                <div className="section-header">
-                  <h3>Documents for this Training</h3>
-                </div>
-                <DocumentsTable documents={documents} />
-              </div>
-
-              <div className="section-card">
-                <div className="section-header">
-                  <h3>Attendance List</h3>
-                </div>
-                <AttendanceTable list={attendance} />
-              </div>
-            </>
-          )}
-
-          {activeTab === "docs" && (
-            <div className="section-card">
-              <div className="section-header">
-                <h3>Required Documents</h3>
-                <p className="section-subtitle">
-                  Gestiona los documentos obligatorios y opcionales de la
-                  capacitación.
-                </p>
-              </div>
+      <div className="tabs-content">
+        {activeTab === "info" && (
+          <>
+            <div className="card-section">
+              <h3>Documents for this Training</h3>
               <DocumentsTable documents={documents} />
             </div>
-          )}
 
-          {activeTab === "attendance" && (
-            <div className="section-card">
-              <div className="section-header">
-                <h3>Attendance List</h3>
-                <p className="section-subtitle">
-                  Revisa el estado de asistencia de los participantes.
-                </p>
-              </div>
+            <div className="card-section">
+              <h3>Attendance List</h3>
               <AttendanceTable list={attendance} />
             </div>
-          )}
-        </div>
+          </>
+        )}
+
+        {activeTab === "docs" && (
+          <div className="card-section">
+            <h3>Required Documents</h3>
+            <DocumentsTable documents={documents} />
+          </div>
+        )}
+
+        {activeTab === "attendance" && (
+          <div className="card-section">
+            <h3>Attendance List</h3>
+            <AttendanceTable list={attendance} />
+          </div>
+        )}
       </div>
     </Layout>
   );

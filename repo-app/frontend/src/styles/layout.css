@@ -1,24 +1,17 @@
-/* CONTENEDOR GENERAL */
 .layout {
   display: flex;
   height: 100vh;
-  width: 100%;
   overflow: hidden;
   background: #f1f5f9;
 }
 
-/* LADO DERECHO */
 .layout-main {
-  margin-left: 240px; /* Sidebar fijo */
+  margin-left: 240px;
   width: calc(100% - 240px);
-  display: flex;
-  flex-direction: column;
   height: 100vh;
   overflow-y: auto;
 }
 
-/* CONTENIDO PRINCIPAL */
 .layout-content {
   padding: 30px;
-  margin-top: 10px;
 }

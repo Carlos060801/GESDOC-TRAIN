@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import {
   MdDashboard,
   MdPeople,
@@ -6,39 +7,66 @@ import {
   MdDescription,
   MdPerson
 } from "react-icons/md";
+
 import "../styles/sidebar.css";
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
+
       <h2 className="sidebar-logo">GESDOC & TRAIN</h2>
 
       <nav className="sidebar-menu">
 
-        <a href="/dashboard" className="sidebar-item active">
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            isActive ? "sidebar-item active" : "sidebar-item"
+          }
+        >
           <MdDashboard className="sidebar-icon" />
           Dashboard
-        </a>
+        </NavLink>
 
-        <a href="/employees" className="sidebar-item">
+        <NavLink
+          to="/employees"
+          className={({ isActive }) =>
+            isActive ? "sidebar-item active" : "sidebar-item"
+          }
+        >
           <MdPeople className="sidebar-icon" />
           Employees
-        </a>
+        </NavLink>
 
-        <a href="/trainings" className="sidebar-item">
+        <NavLink
+          to="/trainings"
+          className={({ isActive }) =>
+            isActive ? "sidebar-item active" : "sidebar-item"
+          }
+        >
           <MdLibraryBooks className="sidebar-icon" />
           Trainings
-        </a>
+        </NavLink>
 
-        <a href="/documents" className="sidebar-item">
+        <NavLink
+          to="/documents"
+          className={({ isActive }) =>
+            isActive ? "sidebar-item active" : "sidebar-item"
+          }
+        >
           <MdDescription className="sidebar-icon" />
           Documents
-        </a>
+        </NavLink>
 
-        <a href="/profile" className="sidebar-item">
+        <NavLink
+          to="/profile"
+          className={({ isActive }) =>
+            isActive ? "sidebar-item active" : "sidebar-item"
+          }
+        >
           <MdPerson className="sidebar-icon" />
           My Profile
-        </a>
+        </NavLink>
 
       </nav>
     </div>

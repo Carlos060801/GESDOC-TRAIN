@@ -5,7 +5,7 @@ import "../styles/topbar.css";
 const Topbar = () => {
   return (
     <div className="topbar">
-      <div className="topbar-icons">
+      <div className="topbar-right">
         <MdNotificationsNone className="topbar-icon" />
         <MdPersonOutline className="topbar-icon" />
       </div>

@@ -1,0 +1,39 @@
+.training-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.training-title-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.training-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.badge.green {
+  background: #22c55e;
+  padding: 4px 12px;
+  border-radius: 999px;
+  color: white;
+}
+
+.training-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.value {
+  font-size: 14px;
+}

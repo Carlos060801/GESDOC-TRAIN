@@ -1,258 +1,40 @@
-.dashboard-container {
-  padding: 20px 24px 32px;
-}
-
-/* TOPBAR */
-.dashboard-topbar {
+.dashboard-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
-.dashboard-title {
+.page-title {
   font-size: 24px;
   font-weight: 700;
   color: #0f172a;
 }
 
-.dashboard-subtitle {
-  margin-top: 4px;
-  font-size: 13px;
+.page-subtitle {
+  font-size: 14px;
   color: #64748b;
 }
 
-.dashboard-actions {
+.top-actions {
   display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.search-wrapper {
-  background: #ffffff;
-  border-radius: 999px;
-  padding: 6px 12px;
-  border: 1px solid #e2e8f0;
+  gap: 12px;
 }
 
 .search-input {
-  border: none;
-  outline: none;
-  font-size: 13px;
-  width: 160px;
+  padding: 8px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
 }
 
 .filter-select {
+  padding: 8px 12px;
   border-radius: 999px;
-  border: 1px solid #e2e8f0;
-  font-size: 13px;
-  padding: 6px 12px;
-  background: #ffffff;
 }
 
 .btn-primary {
   background: #2563eb;
-  color: #ffffff;
-  border: none;
+  color: white;
+  padding: 8px 14px;
   border-radius: 999px;
-  padding: 8px 16px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.3);
-}
-
-.btn-primary:hover {
-  background: #1d4ed8;
-}
-
-/* TRAINING CARD */
-.training-card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 18px 20px;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
-  margin-bottom: 14px;
-}
-
-.training-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 14px;
-}
-
-.training-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  color: #94a3b8;
-  letter-spacing: 0.06em;
-  margin-bottom: 2px;
-}
-
-.training-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.training-status-group {
-  display: flex;
-  gap: 8px;
-}
-
-.badge {
-  font-size: 11px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-weight: 600;
-}
-
-.badge-green {
-  background: #dcfce7;
-  color: #166534;
-}
-
-.badge-light-green {
-  background: #e0f2fe;
-  color: #0369a1;
-}
-
-.training-card-body {
-  display: flex;
-  gap: 32px;
-}
-
-.training-info-item .info-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  color: #94a3b8;
-  margin-bottom: 2px;
-}
-
-.training-info-item .info-value {
-  font-size: 14px;
-  color: #0f172a;
-}
-
-/* TABS */
-.tabs-container {
-  display: flex;
-  gap: 20px;
-  border-bottom: 1px solid #e2e8f0;
-  margin-top: 18px;
-}
-
-.tab-item {
-  padding: 10px 4px;
-  font-size: 13px;
-  color: #64748b;
   border: none;
-  background: transparent;
-  cursor: pointer;
-  position: relative;
-}
-
-.tab-item.active {
-  color: #2563eb;
-  font-weight: 600;
-}
-
-.tab-item.active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -1px;
-  width: 100%;
-  height: 2px;
-  border-radius: 999px;
-  background: #2563eb;
-}
-
-.tabs-section {
-  margin-top: 10px;
-}
-
-/* SECTION CARDS */
-.section-card {
-  background: #ffffff;
-  border-radius: 12px;
-  margin-top: 12px;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
-  padding: 16px 18px;
-}
-
-.section-header {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-bottom: 8px;
-}
-
-.section-header h3 {
-  font-size: 15px;
-  font-weight: 600;
-  color: #0f172a;
-}
-
-.section-subtitle {
-  font-size: 12px;
-  color: #94a3b8;
-}
-
-/* TABLES */
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-}
-
-.table thead {
-  background: #f8fafc;
-}
-
-.table th,
-.table td {
-  padding: 8px 6px;
-  text-align: left;
-}
-
-.table th {
-  font-weight: 600;
-  color: #64748b;
-  font-size: 12px;
-}
-
-.table tbody tr:nth-child(even) {
-  background: #f9fafb;
-}
-
-.table tbody tr:hover {
-  background: #eff6ff;
-}
-
-.status-dot {
-  font-size: 12px;
-  margin-right: 4px;
-}
-
-.status-complete {
-  color: #22c55e;
-}
-
-.status-pending {
-  color: #f59e0b;
-}
-
-.status-text {
-  font-size: 13px;
-  color: #0f172a;
-}
-
-.icon-button {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 16px;
-  color: #94a3b8;
 }

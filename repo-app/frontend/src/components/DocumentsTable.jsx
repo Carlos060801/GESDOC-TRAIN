@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/table.css";
 
 const DocumentsTable = ({ documents }) => {
   return (
@@ -8,7 +9,7 @@ const DocumentsTable = ({ documents }) => {
           <th>ID Name</th>
           <th>Category</th>
           <th>Status</th>
-          <th style={{ textAlign: "right" }}>Action</th>
+          <th className="text-right">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -17,15 +18,15 @@ const DocumentsTable = ({ documents }) => {
             <td>{doc.name}</td>
             <td>{doc.category}</td>
             <td>
-              {doc.status === "Complete" ? (
-                <span className="status-dot status-complete">●</span>
-              ) : (
-                <span className="status-dot status-pending">●</span>
-              )}
-              <span className="status-text">{doc.status}</span>
+              <span
+                className={`status-dot ${
+                  doc.status === "Complete" ? "green" : "yellow"
+                }`}
+              ></span>
+              {doc.status}
             </td>
-            <td style={{ textAlign: "right" }}>
-              <button className="icon-button">⋮</button>
+            <td className="text-right">
+              <button className="dots-btn">•••</button>
             </td>
           </tr>
         ))}
