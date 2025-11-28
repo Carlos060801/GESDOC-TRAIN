@@ -50,8 +50,13 @@ Accede a los manuales técnicos, manuales de usuario y demás documentación del
 Accede a las diapositivas del proyecto, presentaciones en PowerPoint, arquitectura, etc.:  
 👉 https://github.com/Carlos060801/GESDOC-TRAIN/tree/main/repo-docs/Diapositivas
 
-# arquitectura
+# arquitectura:
+## 🏗️ Arquitectura del Sistema
+
+![Arquitectura del Sistema](https://github.com/Carlos060801/GESDOC-TRAIN/blob/main/repo-docs/Diagramas/Arquitectura.drawio.png)
+
 # Proyecto
+
 -----------------------------------
 # 📱 GESDOC - Sistema de Gestión Documental y Capacitación
 
