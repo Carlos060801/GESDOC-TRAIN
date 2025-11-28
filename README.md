@@ -42,6 +42,14 @@ Desarrollar un sistema web distribuido que permita gestionar de forma eficiente 
 docs:
 ![alt text](image.png)
 # Manuales y documentación Con Diapositivas
+### 📘 Manuales
+Accede a los manuales técnicos, manuales de usuario y demás documentación del proyecto:  
+👉 https://github.com/Carlos060801/GESDOC-TRAIN/tree/main/repo-docs/Manuales
+
+### 🎞️ Diapositivas
+Accede a las diapositivas del proyecto, presentaciones en PowerPoint, arquitectura, etc.:  
+👉 https://github.com/Carlos060801/GESDOC-TRAIN/tree/main/repo-docs/Diapositivas
+
 # arquitectura
 # Proyecto
 -----------------------------------
