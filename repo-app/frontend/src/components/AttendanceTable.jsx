@@ -1,43 +1,34 @@
-// src/components/AttendanceTable.jsx
+import React from "react";
 
 const AttendanceTable = ({ list }) => {
   return (
-    <div className="table-container">
-      <h3 className="table-title">Lista de Asistencia</h3>
-
-      <table>
-        <thead>
-          <tr>
-            <th>Empleado</th>
-            <th>Fecha</th>
-            <th>Estado</th>
-            <th>Observación</th>
+    <table className="table">
+      <thead>
+        <tr>
+          <th>Document</th>
+          <th>Department</th>
+          <th>Status</th>
+          <th>Observation</th>
+        </tr>
+      </thead>
+      <tbody>
+        {list.map((row) => (
+          <tr key={row.id}>
+            <td>{row.employee}</td>
+            <td>{row.department}</td>
+            <td>
+              {row.status === "Present" ? (
+                <span className="status-dot status-complete">●</span>
+              ) : (
+                <span className="status-dot status-pending">●</span>
+              )}
+              <span className="status-text">{row.status}</span>
+            </td>
+            <td>{row.observation || "-"}</td>
           </tr>
-        </thead>
-
-        <tbody>
-          {list.map((p, index) => (
-            <tr key={index}>
-              <td>{p.employee}</td>
-              <td>{p.date}</td>
-              <td>
-                <span
-                  className={`status-dot ${
-                    p.status === "Present"
-                      ? "status-green"
-                      : p.status === "Late"
-                      ? "status-orange"
-                      : "status-red"
-                  }`}
-                ></span>{" "}
-                {p.status}
-              </td>
-              <td>{p.observation}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
   );
 };
 

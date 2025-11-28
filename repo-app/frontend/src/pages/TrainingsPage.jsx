@@ -1,36 +1,36 @@
-import React, { useState } from "react";
-import TrainingCard from "../components/TrainingCard";
+import React from "react";
 
-const TrainingsPage = () => {
-  const [trainings] = useState([
-    {
-      id: 1,
-      title: "Capacitación SG-SST",
-      status: "Activo",
-      dateTime: "2025-02-20 08:00 AM",
-      modality: "Presencial",
-      durationMinutes: 90,
-    },
-    {
-      id: 2,
-      title: "Inducción General ICBF",
-      status: "Finalizado",
-      dateTime: "2025-01-15 02:00 PM",
-      modality: "Virtual",
-      durationMinutes: 120,
-    },
-  ]);
-
+const TrainingCard = ({ training }) => {
   return (
-    <div className="dashboard-content">
-      <h1 className="page-title">Capacitaciones</h1>
+    <div className="training-card">
+      <div className="training-card-header">
+        <div>
+          <p className="training-label">Current Training</p>
+          <h2 className="training-title">{training.title}</h2>
+        </div>
 
-      {/* LISTA DE CAPACITACIONES */}
-      {trainings.map((t) => (
-        <TrainingCard key={t.id} training={t} />
-      ))}
+        <div className="training-status-group">
+          <span className="badge badge-green">{training.status}</span>
+          <span className="badge badge-light-green">{training.state}</span>
+        </div>
+      </div>
+
+      <div className="training-card-body">
+        <div className="training-info-item">
+          <p className="info-label">Date &amp; Time</p>
+          <p className="info-value">{training.dateTime}</p>
+        </div>
+        <div className="training-info-item">
+          <p className="info-label">Modality</p>
+          <p className="info-value">{training.modality}</p>
+        </div>
+        <div className="training-info-item">
+          <p className="info-label">Duration</p>
+          <p className="info-value">{training.durationMinutes} minutes</p>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default TrainingsPage;
+export default TrainingCard;

@@ -1,28 +1,17 @@
-// src/components/Tabs.jsx
+import React from "react";
 
-const Tabs = ({ active, setActive }) => {
+const Tabs = ({ active, setActive, tabs }) => {
   return (
     <div className="tabs-container">
-      <button
-        className={`tab-btn ${active === "info" ? "active" : ""}`}
-        onClick={() => setActive("info")}
-      >
-        Información
-      </button>
-
-      <button
-        className={`tab-btn ${active === "docs" ? "active" : ""}`}
-        onClick={() => setActive("docs")}
-      >
-        Documentos Requeridos
-      </button>
-
-      <button
-        className={`tab-btn ${active === "attendance" ? "active" : ""}`}
-        onClick={() => setActive("attendance")}
-      >
-        Lista de Asistencia
-      </button>
+      {tabs.map((tab) => (
+        <button
+          key={tab.id}
+          className={`tab-item ${active === tab.id ? "active" : ""}`}
+          onClick={() => setActive(tab.id)}
+        >
+          {tab.label}
+        </button>
+      ))}
     </div>
   );
 };
